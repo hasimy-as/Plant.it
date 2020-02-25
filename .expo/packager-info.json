@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 2156,
-  "expoServerNgrokUrl": "https://7n-689.as-hasimy.plant-it.exp.direct",
-  "packagerNgrokUrl": "https://packager.7n-689.as-hasimy.plant-it.exp.direct",
-  "ngrokPid": 2171
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

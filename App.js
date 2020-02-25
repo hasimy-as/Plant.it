@@ -3,9 +3,9 @@ import { StyleSheet } from 'react-native';
 
 import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
-import { Block } from './src/Components';
+import { Block } from './src/Components/indexComp';
 
-import Navigation from './src/Navigation';
+import Navigation from './src/Navigation/indexNav';
 
 const images = [
   require('./src/Assets/icons/back.png'),
