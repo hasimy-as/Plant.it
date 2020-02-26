@@ -3,6 +3,7 @@ import { Image, Dimensions, StyleSheet, ScrollView, TouchableOpacity } from 'rea
 
 import { Card, Badge, Button, Block, Text } from "../Components";
 import { fakedata } from '../Data/FakeData';
+import { Themes } from '../Assets/Themes';
 
 const { width } = Dimensions.get("window");
 export default class Browse extends Component {
@@ -61,7 +62,7 @@ export default class Browse extends Component {
 
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={{ paddingVertical: 16 * 2 }}
+          style={{ paddingVertical: Themes.sizes.base * 2 }}
         >
           <Block flex={false} row space="between" style={styles.categories}>
             {categories.map(category => (
@@ -100,35 +101,35 @@ Browse.defaultProps = {
 
 const styles = StyleSheet.create({
   header: {
-    paddingHorizontal: 16 * 2
+    paddingHorizontal: Themes.sizes.base * 2
   },
   avatar: {
-    height: 16 * 2.2,
-    width: 16 * 2.2
+    height: Themes.sizes.base * 2.2,
+    width: Themes.sizes.base * 2.2
   },
   tabs: {
-    borderBottomColor: '#C5CCD6',
+    borderBottomColor: Themes.colors.gray2,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    marginVertical: 16,
-    marginHorizontal: 16 * 2
+    marginVertical: Themes.sizes.base,
+    marginHorizontal: Themes.sizes.base * 2
   },
   tab: {
-    marginRight: 16 * 2,
-    paddingBottom: 16
+    marginRight: Themes.sizes.base * 2,
+    paddingBottom: Themes.sizes.base
   },
   active: {
-    borderBottomColor: '#2BDA8E',
+    borderBottomColor: Themes.colors.secondary,
     borderBottomWidth: 3
   },
   categories: {
     flexWrap: "wrap",
-    paddingHorizontal: 16 * 2,
-    marginBottom: 16 * 3.5
+    paddingHorizontal: Themes.sizes.base * 2,
+    marginBottom: Themes.sizes.base * 3.5
   },
   category: {
-
-    minWidth: (width - 25 * 2.4 - 16) / 2,
-    maxWidth: (width - 25 * 2.4 - 16) / 2,
-    maxHeight: (width - 25 * 2.4 - 16) / 2
+    // this should be dynamic based on screen width
+    minWidth: (width - Themes.sizes.padding * 2.4 - Themes.sizes.base) / 2,
+    maxWidth: (width - Themes.sizes.padding * 2.4 - Themes.sizes.base) / 2,
+    maxHeight: (width - Themes.sizes.padding * 2.4 - Themes.sizes.base) / 2
   }
 });

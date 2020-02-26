@@ -11,7 +11,8 @@ import {
 import * as Icon from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Button, Input, Block, Text } from '../Components';
-import { FakeData } from '../Data/FakeData';
+import { fakedata } from '../Data/FakeData';
+import { Themes } from '../Assets/Themes';
 
 const { width, height } = Dimensions.get('window');
 
@@ -35,7 +36,7 @@ export default class Explore extends Component {
       <Block animated middle flex={searchFocus} style={styles.search}>
         <Input
           placeholder="Search here"
-          placeholderTextColor={'#C5CCD6'}
+          placeholderTextColor={Themes.colors.gray2}
           style={styles.searchInput}
           onFocus={() => this.handleSearchFocus(true)}
           onBlur={() => this.handleSearchFocus(false)}
@@ -45,8 +46,8 @@ export default class Explore extends Component {
           rightLabel={
             <Icon.FontAwesome
               name={isEditing ? 'close' : 'search'}
-              size={16 / 1.6}
-              color={'#C5CCD6'}
+              size={Themes.sizes.base / 1.6}
+              color={Themes.colors.gray2}
               style={styles.searchIcon}
             />
           }
@@ -63,7 +64,7 @@ export default class Explore extends Component {
   renderImage(img, index) {
     const { navigation } = this.props;
     const sizes = Image.resolveAssetSource(img);
-    const fullWidth = width - 25 * 2.5;
+    const fullWidth = width - Themes.sizes.padding * 2.5;
     const resize = (sizes.width * 100) / fullWidth;
     const imgWidth = resize > 75 ? fullWidth : sizes.width * 1;
 
@@ -136,25 +137,25 @@ export default class Explore extends Component {
 }
 
 Explore.defaultProps = {
-  images: FakeData.explore
+  images: fakedata.explore
 };
 
 const styles = StyleSheet.create({
   header: {
-    paddingHorizontal: 16 * 2,
-    paddingBottom: 16 * 2
+    paddingHorizontal: Themes.sizes.base * 2,
+    paddingBottom: Themes.sizes.base * 2
   },
   search: {
-    height: 16 * 2,
-    width: width - 16 * 2
+    height: Themes.sizes.base * 2,
+    width: width - Themes.sizes.base * 2
   },
   searchInput: {
-    fontSize: 12,
-    height: 16 * 2,
+    fontSize: Themes.sizes.caption,
+    height: Themes.sizes.base * 2,
     backgroundColor: "rgba(142, 142, 147, 0.06)",
     borderColor: "rgba(142, 142, 147, 0.06)",
-    paddingLeft: 16 / 1.333,
-    paddingRight: 16 * 1.5
+    paddingLeft: Themes.sizes.base / 1.333,
+    paddingRight: Themes.sizes.base * 1.5
   },
   searchRight: {
     top: 0,
@@ -163,22 +164,22 @@ const styles = StyleSheet.create({
   },
   searchIcon: {
     position: "absolute",
-    right: 16 / 1.333,
-    top: 16 / 1.6
+    right: Themes.sizes.base / 1.333,
+    top: Themes.sizes.base / 1.6
   },
   explore: {
-    marginHorizontal: 25 * 1.25
+    marginHorizontal: Themes.sizes.padding * 1.25
   },
   image: {
     minHeight: 100,
     maxHeight: 130,
-    maxWidth: width - 25 * 2.5,
-    marginBottom: 16,
+    maxWidth: width - Themes.sizes.padding * 2.5,
+    marginBottom: Themes.sizes.base,
     borderRadius: 4
   },
   mainImage: {
-    minWidth: width - 25 * 2.5,
-    minHeight: width - 25 * 2.5
+    minWidth: width - Themes.sizes.padding * 2.5,
+    minHeight: width - Themes.sizes.padding * 2.5
   },
   footer: {
     position: "absolute",
@@ -190,9 +191,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: height * 0.1,
     width,
-    paddingBottom: 16 * 4
+    paddingBottom: Themes.sizes.base * 4
   }
 });
-
-
-

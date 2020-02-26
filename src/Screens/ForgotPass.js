@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 
 import { Button, Block, Input, Text } from '../Components';
+import { Themes } from '../Assets/Themes';
+
 const VALID_EMAIL = "hasimot@email.com";
 
 export default class ForgotPass extends Component {
@@ -62,7 +64,7 @@ export default class ForgotPass extends Component {
 
     return (
       <KeyboardAvoidingView style={styles.forgot} behavior="padding">
-        <Block padding={[0, 16 * 2]}>
+        <Block padding={[0, Themes.sizes.base * 2]}>
           <Text h1 bold>
             Forgot
           </Text>
@@ -109,10 +111,10 @@ const styles = StyleSheet.create({
   input: {
     borderRadius: 0,
     borderWidth: 0,
-    borderBottomColor: '#C5CCD6',
+    borderBottomColor: Themes.colors.gray2,
     borderBottomWidth: StyleSheet.hairlineWidth
   },
   hasErrors: {
-    borderBottomColor: '#F3534A'
+    borderBottomColor: Themes.colors.accent
   }
 });
