@@ -1,59 +1,45 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
-  Alert,
+  ActivityIndicator,
   Keyboard,
   KeyboardAvoidingView,
-  StyleSheet,
-  ActivityIndicator
-} from 'react-native';
+  StyleSheet
+} from "react-native";
 
-import { Button, Block, Input, Text } from '../Components';
-import { Themes } from '../Assets/Themes';
+import { Button, Block, Input, Text } from "../components";
+import { theme } from "../constants";
 
 const VALID_EMAIL = "hasimot@email.com";
+const VALID_PASSWORD = "yurod123";
 
-export default class ForgotPass extends Component {
+export default class Login extends Component {
   state = {
     email: VALID_EMAIL,
+    password: VALID_PASSWORD,
     errors: [],
     loading: false
   };
 
-  handleForgot() {
+  handleLogin() {
     const { navigation } = this.props;
-    const { email } = this.state;
+    const { email, password } = this.state;
     const errors = [];
 
     Keyboard.dismiss();
     this.setState({ loading: true });
 
+    //backend API go here
     if (email !== VALID_EMAIL) {
-      errors.push('email');
+      errors.push("email");
+    }
+    if (password !== VALID_PASSWORD) {
+      errors.push("password");
     }
 
     this.setState({ errors, loading: false });
 
     if (!errors.length) {
-      Alert.alert(
-        'Password sent!',
-        'Please check your email.',
-        [
-          {
-            text: 'OK',
-            onPress: () => {
-              navigation.navigate("Login");
-            }
-          }
-        ],
-        { cancelable: false }
-      );
-    } else {
-      Alert.alert(
-        'Error',
-        'Please check your Email.',
-        [{ text: "Try again!" }],
-        { cancelable: false }
-      );
+      navigation.navigate("Browse");
     }
   }
 
@@ -63,10 +49,10 @@ export default class ForgotPass extends Component {
     const hasErrors = key => (errors.includes(key) ? styles.hasErrors : null);
 
     return (
-      <KeyboardAvoidingView style={styles.forgot} behavior="padding">
-        <Block padding={[0, Themes.sizes.base * 2]}>
+      <KeyboardAvoidingView style={styles.login} behavior="padding">
+        <Block padding={[0, theme.sizes.base * 2]}>
           <Text h1 bold>
-            Forgot
+            Login
           </Text>
           <Block middle>
             <Input
@@ -76,24 +62,32 @@ export default class ForgotPass extends Component {
               defaultValue={this.state.email}
               onChangeText={text => this.setState({ email: text })}
             />
-            <Button gradient onPress={() => this.handleForgot()}>
+            <Input
+              secure
+              label="Password"
+              error={hasErrors("password")}
+              style={[styles.input, hasErrors("password")]}
+              defaultValue={this.state.password}
+              onChangeText={text => this.setState({ password: text })}
+            />
+            <Button gradient onPress={() => this.handleLogin()}>
               {loading ? (
                 <ActivityIndicator size="small" color="white" />
               ) : (
-                  <Text bold white center>
-                    Forgot
+                <Text bold white center>
+                  Login
                 </Text>
-                )}
+              )}
             </Button>
 
-            <Button onPress={() => navigation.navigate("Login")}>
+            <Button onPress={() => navigation.navigate("Forgot")}>
               <Text
                 gray
                 caption
                 center
                 style={{ textDecorationLine: "underline" }}
               >
-                Back to Login
+                Forgot password?
               </Text>
             </Button>
           </Block>
@@ -104,17 +98,17 @@ export default class ForgotPass extends Component {
 }
 
 const styles = StyleSheet.create({
-  forgot: {
+  login: {
     flex: 1,
     justifyContent: "center"
   },
   input: {
     borderRadius: 0,
     borderWidth: 0,
-    borderBottomColor: Themes.colors.gray2,
+    borderBottomColor: theme.colors.gray2,
     borderBottomWidth: StyleSheet.hairlineWidth
   },
   hasErrors: {
-    borderBottomColor: Themes.colors.accent
+    borderBottomColor: theme.colors.accent
   }
 });

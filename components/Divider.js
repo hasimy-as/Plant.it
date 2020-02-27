@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet } from "react-native";
 
 import Block from "./Block";
-import { Themes } from "../Assets/Themes";
+import { theme } from "../constants";
 
 export default class Divider extends Component {
   render() {
@@ -11,7 +11,7 @@ export default class Divider extends Component {
 
     return (
       <Block
-        color={color || Themes.colors.gray2}
+        color={color || theme.colors.gray2}
         style={dividerStyles}
         {...props}
       />
@@ -22,8 +22,8 @@ export default class Divider extends Component {
 export const styles = StyleSheet.create({
   divider: {
     height: 0,
-    margin: Themes.sizes.base * 2,
-    borderBottomColor: Themes.colors.gray2,
+    margin: theme.sizes.base * 2,
+    borderBottomColor: theme.colors.gray2,
     borderBottomWidth: StyleSheet.hairlineWidth
   }
 });

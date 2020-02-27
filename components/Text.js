@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { Text, StyleSheet } from "react-native";
 
-import { Themes } from "../Assets/Themes";
+import { theme } from "../constants";
 
 export default class Typography extends Component {
   render() {
@@ -90,8 +90,8 @@ export default class Typography extends Component {
 const styles = StyleSheet.create({
   // default style
   text: {
-    fontSize: Themes.sizes.font,
-    color: Themes.colors.black
+    fontSize: theme.sizes.font,
+    color: theme.colors.black
   },
   // variations
   regular: {
@@ -113,20 +113,20 @@ const styles = StyleSheet.create({
   center: { textAlign: "center" },
   right: { textAlign: "right" },
   // colors
-  accent: { color: Themes.colors.accent },
-  primary: { color: Themes.colors.primary },
-  secondary: { color: Themes.colors.secondary },
-  tertiary: { color: Themes.colors.tertiary },
-  black: { color: Themes.colors.black },
-  white: { color: Themes.colors.white },
-  gray: { color: Themes.colors.gray },
-  gray2: { color: Themes.colors.gray2 },
+  accent: { color: theme.colors.accent },
+  primary: { color: theme.colors.primary },
+  secondary: { color: theme.colors.secondary },
+  tertiary: { color: theme.colors.tertiary },
+  black: { color: theme.colors.black },
+  white: { color: theme.colors.white },
+  gray: { color: theme.colors.gray },
+  gray2: { color: theme.colors.gray2 },
   // fonts
-  h1: Themes.fonts.h1,
-  h2: Themes.fonts.h2,
-  h3: Themes.fonts.h3,
-  title: Themes.fonts.title,
-  body: Themes.fonts.body,
-  caption: Themes.fonts.caption,
-  small: Themes.fonts.small
+  h1: theme.fonts.h1,
+  h2: theme.fonts.h2,
+  h3: theme.fonts.h3,
+  title: theme.fonts.title,
+  body: theme.fonts.body,
+  caption: theme.fonts.caption,
+  small: theme.fonts.small
 });

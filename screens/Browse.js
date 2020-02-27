@@ -1,11 +1,17 @@
-import React, { Component } from 'react';
-import { Image, Dimensions, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import React, { Component } from "react";
+import {
+  Dimensions,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity
+} from "react-native";
 
-import { Card, Badge, Button, Block, Text } from "../Components";
-import { fakedata } from '../Data/FakeData';
-import { Themes } from '../Assets/Themes';
+import { Card, Badge, Button, Block, Text } from "../components";
+import { theme, mocks } from "../constants";
 
 const { width } = Dimensions.get("window");
+
 export default class Browse extends Component {
   state = {
     active: "Products",
@@ -14,11 +20,13 @@ export default class Browse extends Component {
 
   componentDidMount() {
     this.setState({ categories: this.props.categories });
-  };
+  }
 
   handleTab = tab => {
     const { categories } = this.props;
-    const filtered = categories.filter(category => category.tags.includes(tab.toLowerCase()));
+    const filtered = categories.filter(category =>
+      category.tags.includes(tab.toLowerCase())
+    );
 
     this.setState({ active: tab, categories: filtered });
   };
@@ -50,8 +58,8 @@ export default class Browse extends Component {
         <Block flex={false} row center space="between" style={styles.header}>
           <Text h1 bold>
             Browse
-              </Text>
-          <Button onPress={() => navigation.navigate("Settings")}>
+          </Text>
+          <Button onPress={() => navigation.navigate("Preferences")}>
             <Image source={profile.avatar} style={styles.avatar} />
           </Button>
         </Block>
@@ -62,7 +70,7 @@ export default class Browse extends Component {
 
         <ScrollView
           showsVerticalScrollIndicator={false}
-          style={{ paddingVertical: Themes.sizes.base * 2 }}
+          style={{ paddingVertical: theme.sizes.base * 2 }}
         >
           <Block flex={false} row space="between" style={styles.categories}>
             {categories.map(category => (
@@ -83,7 +91,7 @@ export default class Browse extends Component {
                   </Text>
                   <Text gray caption>
                     {category.count} products
-                      </Text>
+                  </Text>
                 </Card>
               </TouchableOpacity>
             ))}
@@ -95,41 +103,40 @@ export default class Browse extends Component {
 }
 
 Browse.defaultProps = {
-  profile: fakedata.profile,
-  categories: fakedata.categories
+  profile: mocks.profile,
+  categories: mocks.categories
 };
 
 const styles = StyleSheet.create({
   header: {
-    paddingHorizontal: Themes.sizes.base * 2
+    paddingHorizontal: theme.sizes.base * 2
   },
   avatar: {
-    height: Themes.sizes.base * 2.2,
-    width: Themes.sizes.base * 2.2
+    height: theme.sizes.base * 2.2,
+    width: theme.sizes.base * 2.2
   },
   tabs: {
-    borderBottomColor: Themes.colors.gray2,
+    borderBottomColor: theme.colors.gray2,
     borderBottomWidth: StyleSheet.hairlineWidth,
-    marginVertical: Themes.sizes.base,
-    marginHorizontal: Themes.sizes.base * 2
+    marginVertical: theme.sizes.base,
+    marginHorizontal: theme.sizes.base * 2
   },
   tab: {
-    marginRight: Themes.sizes.base * 2,
-    paddingBottom: Themes.sizes.base
+    marginRight: theme.sizes.base * 2,
+    paddingBottom: theme.sizes.base
   },
   active: {
-    borderBottomColor: Themes.colors.secondary,
+    borderBottomColor: theme.colors.secondary,
     borderBottomWidth: 3
   },
   categories: {
     flexWrap: "wrap",
-    paddingHorizontal: Themes.sizes.base * 2,
-    marginBottom: Themes.sizes.base * 3.5
+    paddingHorizontal: theme.sizes.base * 2,
+    marginBottom: theme.sizes.base * 3.5
   },
   category: {
-    // this should be dynamic based on screen width
-    minWidth: (width - Themes.sizes.padding * 2.4 - Themes.sizes.base) / 2,
-    maxWidth: (width - Themes.sizes.padding * 2.4 - Themes.sizes.base) / 2,
-    maxHeight: (width - Themes.sizes.padding * 2.4 - Themes.sizes.base) / 2
+    minWidth: (width - theme.sizes.padding * 2.4 - theme.sizes.base) / 2,
+    maxWidth: (width - theme.sizes.padding * 2.4 - theme.sizes.base) / 2,
+    maxHeight: (width - theme.sizes.padding * 2.4 - theme.sizes.base) / 2
   }
 });

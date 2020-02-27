@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Themes } from "../Assets/Themes";
+import { theme } from "../constants";
 
 class Button extends Component {
   render() {
@@ -61,38 +61,38 @@ class Button extends Component {
 }
 
 Button.defaultProps = {
-  startColor: Themes.colors.primary,
-  endColor: Themes.colors.secondary,
+  startColor: theme.colors.primary,
+  endColor: theme.colors.secondary,
   start: { x: 0, y: 0 },
   end: { x: 1, y: 1 },
   locations: [0.1, 0.9],
   opacity: 0.8,
-  color: Themes.colors.white
+  color: theme.colors.white
 };
 
 export default Button;
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: Themes.sizes.radius,
-    height: Themes.sizes.base * 3,
+    borderRadius: theme.sizes.radius,
+    height: theme.sizes.base * 3,
     justifyContent: "center",
-    marginVertical: Themes.sizes.padding / 3
+    marginVertical: theme.sizes.padding / 3
   },
   shadow: {
-    shadowColor: Themes.colors.black,
+    shadowColor: theme.colors.black,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 10
   },
-  accent: { backgroundColor: Themes.colors.accent },
-  primary: { backgroundColor: Themes.colors.primary },
-  secondary: { backgroundColor: Themes.colors.secondary },
-  tertiary: { backgroundColor: Themes.colors.tertiary },
-  black: { backgroundColor: Themes.colors.black },
-  white: { backgroundColor: Themes.colors.white },
-  gray: { backgroundColor: Themes.colors.gray },
-  gray2: { backgroundColor: Themes.colors.gray2 },
-  gray3: { backgroundColor: Themes.colors.gray3 },
-  gray4: { backgroundColor: Themes.colors.gray4 }
+  accent: { backgroundColor: theme.colors.accent },
+  primary: { backgroundColor: theme.colors.primary },
+  secondary: { backgroundColor: theme.colors.secondary },
+  tertiary: { backgroundColor: theme.colors.tertiary },
+  black: { backgroundColor: theme.colors.black },
+  white: { backgroundColor: theme.colors.white },
+  gray: { backgroundColor: theme.colors.gray },
+  gray2: { backgroundColor: theme.colors.gray2 },
+  gray3: { backgroundColor: theme.colors.gray3 },
+  gray4: { backgroundColor: theme.colors.gray4 }
 });

@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
+  Animated,
   Dimensions,
   Image,
   StyleSheet,
-  Animated,
   ScrollView,
   TouchableOpacity
-} from 'react-native';
+} from "react-native";
+import * as Icon from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 
-import * as Icon from '@expo/vector-icons';
-import { LinearGradient } from 'expo-linear-gradient';
-import { Button, Input, Block, Text } from '../Components';
-import { fakedata } from '../Data/FakeData';
-import { Themes } from '../Assets/Themes';
+import { Button, Input, Block, Text } from "../components";
+import { theme, mocks } from "../constants";
 
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 
 export default class Explore extends Component {
   state = {
@@ -24,37 +23,36 @@ export default class Explore extends Component {
 
   handleSearchFocus(status) {
     Animated.timing(this.state.searchFocus, {
-      toValue: status ? 0.8 : 0.6,
-      duration: 200
+      toValue: status === true,
+      duration: 150
     }).start();
   }
 
   renderSearch() {
     const { searchString, searchFocus } = this.state;
     const isEditing = searchFocus && searchString;
+
     return (
       <Block animated middle flex={searchFocus} style={styles.search}>
         <Input
-          placeholder="Search here"
-          placeholderTextColor={Themes.colors.gray2}
+          placeholder="Search"
+          placeholderTextColor={theme.colors.gray2}
           style={styles.searchInput}
           onFocus={() => this.handleSearchFocus(true)}
           onBlur={() => this.handleSearchFocus(false)}
           onChangeText={text => this.setState({ searchString: text })}
           value={searchString}
+          onRightPress={() =>
+            isEditing ? this.setState({ searchString: null }) : null
+          }
           rightStyle={styles.searchRight}
           rightLabel={
             <Icon.FontAwesome
-              name={isEditing ? 'close' : 'search'}
-              size={Themes.sizes.base / 1.6}
-              color={Themes.colors.gray2}
+              name={isEditing ? "close" : "search"}
+              size={theme.sizes.base / 1.6}
+              color={theme.colors.gray2}
               style={styles.searchIcon}
             />
-          }
-          onRightPress={() =>
-            isEditing ? this.setState({
-              searchString: null
-            }) : null
           }
         />
       </Block>
@@ -64,18 +62,18 @@ export default class Explore extends Component {
   renderImage(img, index) {
     const { navigation } = this.props;
     const sizes = Image.resolveAssetSource(img);
-    const fullWidth = width - Themes.sizes.padding * 2.5;
+    const fullWidth = width - theme.sizes.padding * 2.5;
     const resize = (sizes.width * 100) / fullWidth;
     const imgWidth = resize > 75 ? fullWidth : sizes.width * 1;
 
     return (
-      <TouchableOpacity 
-        key={`img-${index}`} 
-        onPress={() => navigation.navigate('Product')}
+      <TouchableOpacity
+        key={`img-${index}`}
+        onPress={() => navigation.navigate("Product")}
       >
-        <Image 
-          source={img} 
-          style={[styles.image, { minWidth: imgWidth, maxWidth: imgWidth }]} 
+        <Image
+          source={img}
+          style={[styles.image, { minWidth: imgWidth, maxWidth: imgWidth }]}
         />
       </TouchableOpacity>
     );
@@ -137,25 +135,25 @@ export default class Explore extends Component {
 }
 
 Explore.defaultProps = {
-  images: fakedata.explore
+  images: mocks.explore
 };
 
 const styles = StyleSheet.create({
   header: {
-    paddingHorizontal: Themes.sizes.base * 2,
-    paddingBottom: Themes.sizes.base * 2
+    paddingHorizontal: theme.sizes.base * 2,
+    paddingBottom: theme.sizes.base * 2
   },
   search: {
-    height: Themes.sizes.base * 2,
-    width: width - Themes.sizes.base * 2
+    height: theme.sizes.base * 2,
+    width: width - theme.sizes.base * 2
   },
   searchInput: {
-    fontSize: Themes.sizes.caption,
-    height: Themes.sizes.base * 2,
+    fontSize: theme.sizes.caption,
+    height: theme.sizes.base * 2,
     backgroundColor: "rgba(142, 142, 147, 0.06)",
     borderColor: "rgba(142, 142, 147, 0.06)",
-    paddingLeft: Themes.sizes.base / 1.333,
-    paddingRight: Themes.sizes.base * 1.5
+    paddingLeft: theme.sizes.base / 1.333,
+    paddingRight: theme.sizes.base * 1.5
   },
   searchRight: {
     top: 0,
@@ -164,22 +162,22 @@ const styles = StyleSheet.create({
   },
   searchIcon: {
     position: "absolute",
-    right: Themes.sizes.base / 1.333,
-    top: Themes.sizes.base / 1.6
+    right: theme.sizes.base / 1.333,
+    top: theme.sizes.base / 1.6
   },
   explore: {
-    marginHorizontal: Themes.sizes.padding * 1.25
+    marginHorizontal: theme.sizes.padding * 1.25
   },
   image: {
     minHeight: 100,
     maxHeight: 130,
-    maxWidth: width - Themes.sizes.padding * 2.5,
-    marginBottom: Themes.sizes.base,
+    maxWidth: width - theme.sizes.padding * 2.5,
+    marginBottom: theme.sizes.base,
     borderRadius: 4
   },
   mainImage: {
-    minWidth: width - Themes.sizes.padding * 2.5,
-    minHeight: width - Themes.sizes.padding * 2.5
+    minWidth: width - theme.sizes.padding * 2.5,
+    minHeight: width - theme.sizes.padding * 2.5
   },
   footer: {
     position: "absolute",
@@ -191,6 +189,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     height: height * 0.1,
     width,
-    paddingBottom: Themes.sizes.base * 4
+    paddingBottom: theme.sizes.base * 4
   }
 });

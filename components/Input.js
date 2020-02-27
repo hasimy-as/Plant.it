@@ -5,7 +5,7 @@ import * as Icon from "@expo/vector-icons";
 import Text from "./Text";
 import Block from "./Block";
 import Button from "./Button";
-import { Themes } from "../Assets/Themes";
+import { theme } from "../constants";
 
 export default class Input extends Component {
   state = {
@@ -41,8 +41,8 @@ export default class Input extends Component {
           rightLabel
         ) : (
           <Icon.Ionicons
-            color={Themes.colors.gray}
-            size={Themes.sizes.font * 1.35}
+            color={theme.colors.gray}
+            size={theme.sizes.font * 1.35}
             name={!toggleSecure ? "md-eye" : "md-eye-off"}
           />
         )}
@@ -73,7 +73,7 @@ export default class Input extends Component {
 
     const inputStyles = [
       styles.input,
-      error && { borderColor: Themes.colors.accent },
+      error && { borderColor: theme.colors.accent },
       style
     ];
 
@@ -86,7 +86,7 @@ export default class Input extends Component {
       : "default";
 
     return (
-      <Block flex={false} margin={[Themes.sizes.base, 0]}>
+      <Block flex={false} margin={[theme.sizes.base, 0]}>
         {this.renderLabel()}
         <TextInput
           style={inputStyles}
@@ -107,19 +107,19 @@ export default class Input extends Component {
 const styles = StyleSheet.create({
   input: {
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: Themes.colors.black,
-    borderRadius: Themes.sizes.radius,
-    fontSize: Themes.sizes.font,
+    borderColor: theme.colors.black,
+    borderRadius: theme.sizes.radius,
+    fontSize: theme.sizes.font,
     fontWeight: "500",
-    color: Themes.colors.black,
-    height: Themes.sizes.base * 3
+    color: theme.colors.black,
+    height: theme.sizes.base * 3
   },
   toggle: {
     position: "absolute",
     alignItems: "flex-end",
-    width: Themes.sizes.base * 2,
-    height: Themes.sizes.base * 2,
-    top: Themes.sizes.base,
+    width: theme.sizes.base * 2,
+    height: theme.sizes.base * 2,
+    top: theme.sizes.base,
     right: 0
   }
 });

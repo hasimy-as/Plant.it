@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
-import { Image, StyleSheet, TextInput, ScrollView } from 'react-native';
-import Slider from 'react-native-slider';
+import React, { Component } from "react";
+import { Image, StyleSheet, ScrollView, TextInput } from "react-native";
+import Slider from "react-native-slider";
 
-import { Button, Block, Text, Divider, Switch } from '../Components';
-import { fakedata } from '../Data/FakeData';
-import { Themes } from '../Assets/Themes';
+import { Divider, Button, Block, Text, Switch } from "../components";
+import { theme, mocks } from "../constants";
 
 export default class Preferences extends Component {
   state = {
     budget: 850,
-    monthly: 2000,
+    monthly: 1700,
     notifications: true,
     newsletter: false,
     editing: null,
@@ -68,12 +67,12 @@ export default class Preferences extends Component {
                 <Text gray2 style={{ marginBottom: 10 }}>
                   Username
                 </Text>
-                {this.renderEdit('username')}
+                {this.renderEdit("username")}
               </Block>
               <Text
                 medium
                 secondary
-                onPress={() => this.toggleEdit('username')}
+                onPress={() => this.toggleEdit("username")}
               >
                 {editing === "username" ? "Save" : "Edit"}
               </Text>
@@ -89,7 +88,7 @@ export default class Preferences extends Component {
               <Text
                 medium
                 secondary
-                onPress={() => this.toggleEdit('location')}
+                onPress={() => this.toggleEdit("location")}
               >
                 {editing === "location" ? "Save" : "Edit"}
               </Text>
@@ -98,18 +97,18 @@ export default class Preferences extends Component {
             <Block row space="between" margin={[10, 0]} style={styles.inputRow}>
               <Block>
                 <Text gray2 style={{ marginBottom: 10 }}>
-                  E-Mail
+                  E-mail
                 </Text>
                 <Text bold>{profile.email}</Text>
               </Block>
             </Block>
           </Block>
 
-          <Divider margin={[Themes.sizes.base, Themes.sizes.base * 2]} />
+          <Divider margin={[theme.sizes.base, theme.sizes.base * 2]} />
 
           <Block style={styles.sliders}>
             <Block margin={[10, 0]}>
-              <Text gray style={{ marginBottom: 10 }}>
+              <Text gray2 style={{ marginBottom: 10 }}>
                 Budget
               </Text>
               <Slider
@@ -118,7 +117,7 @@ export default class Preferences extends Component {
                 style={{ height: 19 }}
                 thumbStyle={styles.thumb}
                 trackStyle={{ height: 6, borderRadius: 6 }}
-                minimumTrackTintColor={Themes.colors.secondary}
+                minimumTrackTintColor={theme.colors.secondary}
                 maximumTrackTintColor="rgba(157, 163, 180, 0.10)"
                 value={this.state.budget}
                 onValueChange={value => this.setState({ budget: value })}
@@ -127,7 +126,7 @@ export default class Preferences extends Component {
                 $1,000
               </Text>
             </Block>
-
+            
             <Block margin={[10, 0]}>
               <Text gray2 style={{ marginBottom: 10 }}>
                 Monthly Cap
@@ -156,14 +155,12 @@ export default class Preferences extends Component {
               row
               center
               space="between"
-              style={{ marginBottom: Themes.sizes.base * 2 }}
+              style={{ marginBottom: theme.sizes.base * 2 }}
             >
-              <Text gray2>
-                Notifications
-              </Text>
+              <Text gray2>Notifications</Text>
               <Switch
                 value={this.state.notifications}
-                onValueChange={value => this.setState({ notifications: value })} 
+                onValueChange={value => this.setState({ notifications: value })}
               />
             </Block>
 
@@ -171,7 +168,7 @@ export default class Preferences extends Component {
               row
               center
               space="between"
-              style={{ marginBottom: Themes.sizes.base * 2 }}
+              style={{ marginBottom: theme.sizes.base * 2 }}
             >
               <Text gray2>Newsletter</Text>
               <Switch
@@ -184,41 +181,40 @@ export default class Preferences extends Component {
       </Block>
     );
   }
-};
+}
 
 Preferences.defaultProps = {
-  profile: fakedata.profile
+  profile: mocks.profile
 };
 
 const styles = StyleSheet.create({
   header: {
-    paddingHorizontal: Themes.sizes.base * 2
+    paddingHorizontal: theme.sizes.base * 2
   },
   avatar: {
-    height: Themes.sizes.base * 2.2,
-    width: Themes.sizes.base * 2.2
+    height: theme.sizes.base * 2.2,
+    width: theme.sizes.base * 2.2
   },
   inputs: {
-    marginTop: Themes.sizes.base * 0.7,
-    paddingHorizontal: Themes.sizes.base * 2
+    marginTop: theme.sizes.base * 0.7,
+    paddingHorizontal: theme.sizes.base * 2
   },
   inputRow: {
     alignItems: "flex-end"
   },
   sliders: {
-    marginTop: Themes.sizes.base * 0.7,
-    paddingHorizontal: Themes.sizes.base * 2
+    marginTop: theme.sizes.base * 0.7,
+    paddingHorizontal: theme.sizes.base * 2
   },
   thumb: {
-    width: Themes.sizes.base,
-    height: Themes.sizes.base,
-    borderRadius: Themes.sizes.base,
+    width: theme.sizes.base,
+    height: theme.sizes.base,
+    borderRadius: theme.sizes.base,
     borderColor: "white",
     borderWidth: 3,
-    backgroundColor: Themes.colors.secondary
+    backgroundColor: theme.colors.secondary
   },
   toggles: {
-    paddingHorizontal: Themes.sizes.base * 2
+    paddingHorizontal: theme.sizes.base * 2
   }
 });
-
