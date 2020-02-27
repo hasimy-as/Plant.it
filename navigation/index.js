@@ -18,11 +18,11 @@ const screens = createStackNavigator(
   {
     Welcome,
     Login,
-    Register,
     Forgot,
-    Explore,
     Browse,
     Product,
+    Explore,
+    Register,
     Preferences
   },
   {
