@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 
 import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
@@ -61,5 +60,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({});
