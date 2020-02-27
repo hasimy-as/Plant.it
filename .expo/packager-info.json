@@ -3,7 +3,7 @@
   "expoServerPort": null,
   "packagerPort": null,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://gy-9qi.as-hasimy.plant-it.exp.direct",
+  "packagerNgrokUrl": "https://packager.gy-9qi.as-hasimy.plant-it.exp.direct",
+  "ngrokPid": 5711
 }

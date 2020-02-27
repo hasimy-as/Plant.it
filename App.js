@@ -3,35 +3,34 @@ import { StyleSheet } from 'react-native';
 
 import { AppLoading } from "expo";
 import { Asset } from "expo-asset";
-import { Block } from './src/Components/indexComp';
+import { Block } from './src/Components';
 
-import Navigation from './src/Navigation/indexNav';
+import Navigation from './src/Navigation/NavigationIndex';
 
 const images = [
-  require('./src/Assets/icons/back.png'),
-  require('./src/Assets/icons/plants.png'),
-  require('./src/Assets/icons/seeds.png'),
-  require('./src/Assets/icons/flowers.png'),
-  require('./src/Assets/icons/sprayers.png'),
-  require('./src/Assets/icons/pots.png'),
-  require('./src/Assets/icons/fertilizers.png'),
-  require('./src/Assets/images/plants_1.png'),
-  require('./src/Assets/images/plants_2.png'),
-  require('./src/Assets/images/plants_3.png'),
-  require('./src/Assets/images/explore_1.png'),
-  require('./src/Assets/images/explore_2.png'),
-  require('./src/Assets/images/explore_3.png'),
-  require('./src/Assets/images/explore_4.png'),
-  require('./src/Assets/images/explore_5.png'),
-  require('./src/Assets/images/explore_6.png'),
-  require('./src/Assets/images/illustration_1.png'),
-  require('./src/Assets/images/illustration_2.png'),
-  require('./src/Assets/images/illustration_3.png'),
-  require('./src/Assets/images/avatar.png')
+  require('./assets/icons/back.png'),
+  require('./assets/icons/plants.png'),
+  require('./assets/icons/seeds.png'),
+  require('./assets/icons/flowers.png'),
+  require('./assets/icons/sprayers.png'),
+  require('./assets/icons/pots.png'),
+  require('./assets/icons/fertilizers.png'),
+  require('./assets/images/plants_1.png'),
+  require('./assets/images/plants_2.png'),
+  require('./assets/images/plants_3.png'),
+  require('./assets/images/explore_1.png'),
+  require('./assets/images/explore_2.png'),
+  require('./assets/images/explore_3.png'),
+  require('./assets/images/explore_4.png'),
+  require('./assets/images/explore_5.png'),
+  require('./assets/images/explore_6.png'),
+  require('./assets/images/illustration_1.png'),
+  require('./assets/images/illustration_2.png'),
+  require('./assets/images/illustration_3.png'),
+  require('./assets/images/avatar.png')
 ]
 
 export default class App extends Component {
-
   state = {
     loadingComplete: false
   };
@@ -62,5 +61,3 @@ export default class App extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({});

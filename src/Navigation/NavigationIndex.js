@@ -1,4 +1,4 @@
-import React from 'react';
+ import React from 'react';
 import { Image } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -30,7 +30,7 @@ const screens = createStackNavigator({
             backgroundColor: '#FFFFFF',
             borderBottomColor: 'transparent',
         },
-        headerBackImage: <Image source={require('../Assets/icons/back.png')} />,
+        headerBackImage: <Image source={require('../../assets/icons/back.png')} />,
         headerBackTitle: null,
         headerLeftContainerStyle: {
             alignItems: 'center',
