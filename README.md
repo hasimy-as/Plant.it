@@ -7,6 +7,7 @@ This project was made after this UI design from [Dribbble](https://dribbble.com/
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://gitHub.com/hasimy-as/Plant.it)
 
 
 ## Version
